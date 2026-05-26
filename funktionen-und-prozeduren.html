@@ -1,0 +1,1365 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Einführung in VBScript">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-vbscript-janv-2002/funktionen-und-prozeduren.html">
+      
+      
+        <link rel="prev" href="fehlerbehandlung.html">
+      
+      
+        <link rel="next" href="textdateien.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>5. Funktionen und Prozeduren - Einführung in VBScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Einführung in VBScript";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-funktionen-und-prozeduren" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Einführung in VBScript" class="md-header__button md-logo" aria-label="Einführung in VBScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Einführung in VBScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Funktionen und Prozeduren
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum Dunkelmodus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum Dunkelmodus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum hellen Modus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum hellen Modus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-vbscript-janv-2002" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Einführung in VBScript" class="md-nav__button md-logo" aria-label="Einführung in VBScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Einführung in VBScript
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-vbscript-janv-2002" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einleitung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einleitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vbscript-ausfuhrungskontexte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. VBSCRIPT-Ausführungskontexte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="grundlagen-der-vbscript-programmierung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Grundlagen der VBScript-Programmierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fehlerbehandlung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Fehlerbehandlung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Funktionen und Prozeduren
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="funktionen-und-prozeduren.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Funktionen und Prozeduren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-vordefinierte-funktionen-von-vbscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Vordefinierte Funktionen von VBScript
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-modulare-programmierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Modulare Programmierung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-vbscript-funktionen-und-prozeduren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. VBScript-Funktionen und -Prozeduren
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. VBScript-Funktionen und -Prozeduren">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-deklaration-von-vbscript-funktionen-und-prozeduren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1. Deklaration von VBScript-Funktionen und -Prozeduren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-parameterubergabemodi-fur-eine-funktion-oder-prozedur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2. Parameterübergabemodi für eine Funktion oder Prozedur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-syntax-fur-den-aufruf-von-funktionen-und-prozeduren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.3. Syntax für den Aufruf von Funktionen und Prozeduren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#534-einige-beispiele-fur-funktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.4. Einige Beispiele für Funktionen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#535-ausgabeparameter-oder-funktionsergebnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.5. Ausgabeparameter oder Funktionsergebnis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-das-vbscript-programm-zum-sortieren-von-werten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Das VBScript-Programm zum Sortieren von Werten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-das-tax-programm-in-modularer-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. Das TAX-Programm in modularer Form
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="textdateien.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Textdateien
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="refheading1878332734444"></a>
+<a id="toc535044815"></a></p>
+<h1 id="5-funktionen-und-prozeduren">5. <span style="color: #365f91">Funktionen und Prozeduren</span></h1>
+<p><a id="refheading1878532734444"></a>
+<a id="toc535044816"></a></p>
+<h2 id="51-vordefinierte-funktionen-von-vbscript">5.1. <span style="color: #4f81bd">Vordefinierte Funktionen von VBScript</span></h2>
+<p>Die Vielseitigkeit einer Sprache hängt weitgehend von ihrer Funktionsbibliothek ab, da diese Funktionen unter dem Namen von Methoden in Objekten gekapselt werden können. In dieser Hinsicht kann VBScript als eher begrenzt angesehen werden.</p>
+<p>Die folgende Tabelle listet VBScript-Funktionen außerhalb von Objekten auf. Wir werden nicht näher auf sie eingehen. Ihre Namen geben im Allgemeinen ihren Zweck an. Leser sollten die Dokumentation konsultieren, um Details zu einer bestimmten Funktion zu erhalten.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Abs</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Array</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Asc</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Atn</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CBool</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CByte</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CCur</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CDate</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CDbl</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Chr</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CInt</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CLng</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Konvertierungen</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Cos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CreateObject</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">CSng</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Date</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DateAdd</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DateDiff</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">DatePart</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Datumsserie</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Datumswert</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Tag</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Abgeleitete mathematische Funktionen</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Eval</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Exp</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Filter</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Währung Format</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">FormatDateTime</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Zahlenformat</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Prozentformat</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GetLocale</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GetObject</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">GetRef</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Hex</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Stunde</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Eingabefeld</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">InStr</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">InStrRev</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Int, Fixs</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IsArray</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IsDate</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IsEmpty</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IstNull</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IstZahl</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">IstObjekt</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Join</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">LBound</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">LCase</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Links</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Len</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Bild laden</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Log</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">LTrim; RTrim; und Trims</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Mathematik</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Mitte</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Minute</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Monat</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Monatsname</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">MsgBox</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Jetzt</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Okt</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Ersetzen</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">RGB</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Rechts</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Rnd</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Rund</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ScriptEngine</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ScriptEngineBuildVersion</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ScriptEngineMajorVersion</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ScriptEngineMinorVersion</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Sekunde</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">SetLocale</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Sgn</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Sünde</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Leerzeichen</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Teilen</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Quadrat</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">StrComp</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">String</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Tan</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Zeit</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Timer</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">TimeSerial</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Zeitwert</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Typname</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">UBound</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">UCase</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">VarType</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Wochentag</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Wochentagsname</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Jahr</div></td></tr></table>
+
+<p><a id="refheading1878732734444"></a>
+<a id="toc535044817"></a></p>
+<h2 id="52-modulare-programmierung">5.2. <span style="color: #4f81bd"><strong>Modulare Programmierung</strong></span></h2>
+<p>Die programmierte Lösung eines Problems zu beschreiben bedeutet, die Abfolge von Grundoperationen zu beschreiben, die vom Computer ausgeführt werden können und zur Lösung des Problems führen. Je nach Programmiersprache variiert die Komplexität dieser Grundoperationen. Beispiele hierfür sind:</p>
+<ul>
+  <li>Daten von der Tastatur oder einer Festplatte lesen         
+  </li>
+  <li>Schreiben von Daten auf den Bildschirm, einen Drucker, eine Festplatte usw.
+  </li>
+  <li>Berechnung von Ausdrücken
+  </li>
+  <li>Navigieren durch eine Datei
+  </li>
+  <li>...
+  </li>
+</ul>
+
+<p>Die Beschreibung eines komplexen Problems kann mehrere tausend dieser grundlegenden Anweisungen oder mehr erfordern. Daher ist es für den menschlichen Verstand sehr schwierig, den Gesamtüberblick über ein Programm zu behalten. Angesichts dieser Schwierigkeit, das Problem als Ganzes zu erfassen, zerlegen wir es in Teilprobleme, die leichter zu lösen sind. Betrachten Sie das folgende Problem: Sortieren Sie eine Liste von Zahlenwerten, die über die Tastatur eingegeben wurden, und zeigen Sie die sortierte Liste auf dem Bildschirm an.</p>
+<p>Wir können die Lösung zunächst in folgender Form beschreiben:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  début
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        lire les valeurs et les mettre dans un tableau T
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        trier le tableau T
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        écrire les valeurs triées du tableau T à l&#39;écran
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  fin
+</code></pre></div>
+<p>Wir haben das Problem in drei Teilprobleme zerlegt, die leichter zu lösen sind. Die algorithmische Notation ist oft formalisierter als die vorherige, und der Algorithmus würde wie folgt geschrieben werden:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>   début
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>         lire_tableau(T)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>         trier_tableau(T)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>         écrire_tableau(T)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   fin
+</code></pre></div>
+<p>wobei T ein Array darstellt. Die Operationen </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    . lire_tableau(T)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    . trier_tableau(T)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    . écrire_tableau(T)
+</code></pre></div>
+<p>sind nicht-elementare Operationen, die wiederum durch elementare Operationen beschrieben werden müssen. Dies geschieht in sogenannten Modulen. Die Daten T werden als Modulparameter bezeichnet. Es handelt sich dabei um Informationen, die das aufrufende Programm an das aufgerufene Modul übergibt (Eingabeparameter) oder vom aufgerufenen Modul erhält (Ausgabeparameter). Die Parameter eines Moduls sind somit die Informationen, die zwischen dem aufrufenden Programm und dem aufgerufenen Modul ausgetauscht werden.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Modul <i>read_array(T)</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000017E0000008A7F5CD177.png" width="191" height="69" style="display:inline-block; margin:4px;width:5.054cm;height:1.826cm;" class="odt-zoomable" data-zoom-src="images/100000000000017E0000008A7F5CD177.png" /></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Modul <i>sort_array(T)</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000014F000000D8414BA015.png" width="168" height="108" style="display:inline-block; margin:4px;width:4.433cm;height:2.858cm;" class="odt-zoomable" data-zoom-src="images/100000000000014F000000D8414BA015.png" /></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Modul <i>read_array(T)</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000200000000AD49850B97.png" width="256" height="87" style="display:inline-block; margin:4px;width:6.773cm;height:2.29cm;" class="odt-zoomable" data-zoom-src="images/1000000000000200000000AD49850B97.png" /></td></tr></table>
+
+<p>Das Modul <em>read_array(T)</em> könnte wie folgt beschrieben werden:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">début</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    écrire &quot;Tapez la suite de valeurs à trier sous la forme val1 val2 ... : &quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    lire </span><span style="font-style:italic">valeurs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    construire tableau </span><span style="font-style:italic">T</span><span style="color:#000000"> à partir de la chaîne </span><span style="font-style:italic">valeurs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">fin</span></span>
+</code></pre></div>
+
+<p>Damit haben wir das Modul <em>„read_array“</em> ausreichend beschrieben. Tatsächlich lassen sich die drei erforderlichen Schritte direkt in VBScript umsetzen. Für den letzten Schritt ist die Verwendung der Funktion „Split“ erforderlich. Hätte VBScript diese Funktion nicht, müsste Schritt 3 wiederum in einzelne Schritte zerlegt werden, die eine direkte Entsprechung in VBScript haben.</p>
+<p>Das Modul <em>„write_array(T)“</em> könnte wie folgt beschrieben werden:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">début</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    construire chaîne </span><span style="font-style:italic">texte</span><span style="color:#000000"> &quot;valeur1,valeur2,....&quot; à partir du tableau </span><span style="font-style:italic">T</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    écrire </span><span style="font-style:italic">texte</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">fin</span></span>
+</code></pre></div>
+
+<p>Das Modul <em>write_array(T)</em> könnte wie folgt beschrieben werden (unter der Annahme, dass die Indizes der Elemente von T bei 0 beginnen):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>début
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>      N&lt;-- indice dernier élément du tableau T
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>      pour IFIN variant de N à 1
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>      faire
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>          //on recherche l&#39;indice IMAX du plus gd élément de T
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>          // IFIN est l&#39;indice du dernier élément de T
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>          chercher_max(T, IFIN, IMAX) 
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>          // on échange l&#39;élément le plus grand de T avec le dernier élément de T
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>          échanger (T, IMAX, IFIN)
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>      finfaire
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>FIN
+</code></pre></div>
+<p>Auch hier verwendet der Algorithmus wieder nicht-elementare Aktionen:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> . </span><span style="font-style:italic">chercher_max(T, IFIN, IMAX)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> . </span><span style="font-style:italic">échanger(T, IMAX, IFIN)</span></span></span>
+</code></pre></div>
+
+<p><em>find_max(T, IFIN, IMAX)</em> gibt den Index IMAX des größten Elements im Array T zurück, dessen letztes Element den Index IFIN hat.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000011B000000CB24BEC5B9.png" width="142" height="102" style="display:inline-block; margin:4px;width:3.745cm;height:2.686cm;" class="odt-zoomable" data-zoom-src="images/100000000000011B000000CB24BEC5B9.png" /></td></tr></table>
+
+<p><em>swap(T, IMAX, IFIN)</em> tauscht zwei Elemente des Arrays T aus, nämlich diejenigen an den Indizes IMAX und IFIN.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000001B9000000C5DC6E1A6D.png" width="221" height="99" style="display:inline-block; margin:4px;width:5.835cm;height:2.607cm;" class="odt-zoomable" data-zoom-src="images/10000000000001B9000000C5DC6E1A6D.png" /></td></tr></table>
+
+<p>Wir müssen daher die neuen nicht-elementaren Operationen beschreiben.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Modul <i>find_max(A, IFIN, IMAX)</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>   begin
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>        IMAX&lt;--0
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        für i von 1 bis IFIN
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        dann
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>           wenn T[i] &gt; T[IMAX], dann
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>             start
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                IMAX&lt;--i
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>             Ende
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        finfaire
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    Ende
+</code></pre></div>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Austauschmodul<i>(T IMAX, IFIN)</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>  start
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>       temp&lt;----T[IMAX]
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>       T[IMAX]&lt;---T[IFIN]
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>       T[IFIN]&lt;---temp
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  Ende
+</code></pre></div>
+</div></td></tr></table>
+
+<p>Das ursprüngliche Problem wurde unter Verwendung grundlegender VBScript-Operationen vollständig beschrieben und kann daher nun in diese Sprache übersetzt werden. Beachten Sie, dass sich grundlegende Operationen von Sprache zu Sprache unterscheiden können und daher bei der Analyse eines Problems irgendwann die verwendete Programmiersprache berücksichtigt werden muss. Ein Objekt, das in einer Sprache existiert, existiert möglicherweise in einer anderen nicht, wodurch sich der verwendete Algorithmus ändert. Wenn eine Sprache also über eine Sortierfunktion verfügt, wäre es absurd, diese hier nicht zu verwenden.</p>
+<p>Das hier angewandte Prinzip ist als Top-Down-Analyse bekannt. Wenn wir den Rahmen der Lösung skizzieren, ergibt sich Folgendes:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003410000012DD84E7EB3.png" width="417" height="151" style="display:inline-block; margin:4px;width:11.021cm;height:3.983cm;" class="odt-zoomable" data-zoom-src="images/10000000000003410000012DD84E7EB3.png" /></td></tr></table>
+
+<p>Wir haben eine Baumstruktur.</p>
+<p><a id="refheading1878932734444"></a>
+<a id="toc535044818"></a></p>
+<h2 id="53-vbscript-funktionen-und-prozeduren">5.3. <span style="color: #4f81bd">VBScript-Funktionen und -Prozeduren</span></h2>
+<p>Sobald die modulare Analyse durchgeführt wurde, kann der Programmierer die Module seines Algorithmus in <em>VBScript-Funktionen</em> oder <em>-Prozeduren</em> umsetzen. Sowohl <em>Funktionen</em> als auch <em>Prozeduren</em> akzeptieren Eingabe-/Ausgabeparameter, aber eine <em>Funktion</em> gibt ein Ergebnis zurück, das es ermöglicht, sie in Ausdrücken zu verwenden, während dies bei einer <em>Prozedur</em> nicht der Fall ist.</p>
+<p><a id="refheading1879132734444"></a>
+<a id="toc535044819"></a></p>
+<h3 id="531-deklaration-von-vbscript-funktionen-und-prozeduren">5.3.1. <span style="color: #4f81bd">Deklaration von VBScript-Funktionen und -Prozeduren</span></h3>
+<p>Die Deklaration einer VBScript-Prozedur lautet wie folgt </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sub nomProcédure([Byref/Byval] param1, [Byref/Byval] param2, ...)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    instructions
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>end sub
+</code></pre></div>
+<p>und die einer Funktion </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">nomFonction</span><span class="p">([</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nx">instructions</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nx">end</span><span class="w"> </span><span class="nx">sub</span>
+</code></pre></div>
+<p>Um ihr Ergebnis zurückzugeben, muss die Funktion eine Zuweisungsanweisung enthalten, die das Ergebnis einer Variablen mit dem gleichen Namen wie die Funktion zuweist:</p>
+<div class="highlight"><pre><span></span><code>Funktionsname=Ergebnis
+</code></pre></div>
+<p>Die Ausführung einer Funktion oder Prozedur endet auf zwei Arten:</p>
+<ol>
+  <li>beim Auftreffen auf die Anweisung „end function“ oder „end sub“
+  </li>
+  <li>beim Auftreten der Anweisung „exit function“ oder „exit sub“
+  </li>
+</ol>
+
+<p>Beachten Sie bei einer Funktion, dass das Ergebnis einer Variablen mit dem Namen der Funktion zugewiesen worden sein muss, bevor die Funktion mit einer „end function“- oder „exit function“-Anweisung endet.</p>
+<p><a id="refheading1879332734444"></a>
+<a id="toc535044820"></a></p>
+<h3 id="532-parameterubergabemodi-fur-eine-funktion-oder-prozedur">5.3.2. <span style="color: #4f81bd">Parameterübergabemodi für eine Funktion oder Prozedur</span></h3>
+<p>In der Deklaration der Ein- und Ausgabeparameter einer Funktion oder Prozedur wird der Modus (<strong>byRef, byVal</strong>) der Parameterübergabe vom aufrufenden Programm an das aufgerufene Programm angegeben:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">sub</span><span class="w"> </span><span class="nx">nomProcédure</span><span class="p">([</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">nomFonction</span><span class="p">([</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">param2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</code></pre></div>
+<p>Wenn der Modus <em>byRef</em> oder <em>byVal</em> nicht angegeben ist, wird der Modus <em>byRef</em> verwendet.</p>
+<p><u><strong>Tatsächliche Parameter, formale Parameter</strong></u></p>
+<p>Betrachten wir eine VBScript-Funktion, die wie folgt definiert ist</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">nomFonction</span><span class="p">([</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">paramForm1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">Byref</span><span class="o">/</span><span class="nx">Byval</span><span class="p">]</span><span class="w"> </span><span class="nx">paramForm2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">...</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nx">end</span><span class="w"> </span><span class="kd">function</span>
+</code></pre></div>
+<p>Die in der Definition der Funktion oder Prozedur verwendeten Parameter <em>paramForm1</em> werden als <strong>formale Parameter</strong> bezeichnet. Die vorstehende Funktion kann vom Hauptprogramm oder einem anderen Modul aus mit einer Anweisung wie der folgenden aufgerufen werden:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>résultat=nomFonction(paramEff1, paramEff2, ...)
+</code></pre></div>
+<p>Die Parameter <em>paramEffi,</em> die beim Aufruf der Funktion oder Prozedur verwendet werden, werden als <strong>tatsächliche Parameter</strong> bezeichnet. Wenn die Ausführung der Funktion <em>functionName</em> beginnt, erhalten die formalen Parameter die Werte der entsprechenden tatsächlichen Parameter. Die Schlüsselwörter <em>byRef</em> und <em>byVal</em> legen die Art der Übergabe dieser Werte fest.</p>
+<p><u><strong>Wertübergabe (byVal)</strong></u></p>
+<p>Wenn ein formaler Parameter diesen Übergabemodus angibt, sind der formale Parameter und der tatsächliche Parameter zwei verschiedene Variablen. Der Wert des tatsächlichen Parameters wird vor der Ausführung der Funktion oder Prozedur in den formalen Parameter kopiert. Wenn die Funktion oder Prozedur den Wert des formalen Parameters während der Ausführung ändert, hat dies keinen Einfluss auf den Wert des entsprechenden tatsächlichen Parameters. Diese Übergabemethode eignet sich gut für die Eingabeparameter einer Funktion oder Prozedur.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003AE0000015201B9BF3A.png" width="471" height="169" style="display:inline-block; margin:4px;width:12.462cm;height:4.471cm;" class="odt-zoomable" data-zoom-src="images/10000000000003AE0000015201B9BF3A.png" /></td></tr></table>
+
+<p><u><strong>Referenzübergabe (byRef)</strong></u></p>
+<p>Dieser Übergabemodus ist der Standard, wenn kein Parameterübergabemodus angegeben wird. Wenn ein formaler Parameter diesen Übergabemodus angibt, <strong>sind</strong> der formale Parameter und der entsprechende tatsächliche Parameter <strong>ein und dieselbe Variable</strong>. Wenn die Funktion also den formalen Parameter ändert, wird auch der tatsächliche Parameter geändert. Dieser Übergabemodus eignet sich gut für:</p>
+<ul>
+  <li>Ausgabeparameter, da deren Werte an das aufrufende Programm zurückgegeben werden müssen
+  </li>
+  <li>Eingabeparameter, deren Kopieren aufwendig ist, wie z. B. Arrays
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003BF0000013E151932EA.png" width="480" height="159" style="display:inline-block; margin:4px;width:12.688cm;height:4.207cm;" class="odt-zoomable" data-zoom-src="images/10000000000003BF0000013E151932EA.png" /></td></tr></table>
+
+<p>Das folgende Programm zeigt Beispiele für die Parameterübergabe:</p>
+<p><strong>Programm</strong></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Sub</span><span style="color:#000000"> proc1(byval i, </span><span style="color:#00007f">ByRef</span><span style="color:#000000"> j, k)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; i is passed by value (byval) - the effective parameter and the formal parameter are then different</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; j is passed by value (byref) - the effective parameter and the formal parameter are then identical</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the k passage mode is not specified. The default is by reference</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  i=i+1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  j=j+1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  k=k+1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  affiche &quot;dans proc1&quot;,i,j,k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Sub</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> </span><span style="color:#00007f">Sub</span><span style="color:#000000"> affiche(byval msg, </span><span style="color:#00007f">ByVal</span><span style="color:#000000"> i, </span><span style="color:#00007f">ByVal</span><span style="color:#000000"> j, </span><span style="color:#00007f">ByVal</span><span style="color:#000000"> k)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; displays the values of i and j and k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo msg &amp; &quot; i=&quot; &amp; i &amp; &quot; j=&quot; &amp; j &amp; &quot; k=&quot; &amp; k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Sub</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; ------------- calls to functions and procedures</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; init i and j</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  i=4:j=5 : k=6</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; check</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  affiche &quot;dans programme principal, avant l&#x27;appel à proc1 :&quot;,i,j,k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; call proc1 procedure</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  proc1 i,j,k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; check</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  affiche &quot;dans programme principal, après l&#x27;appel à proc1 :&quot;,i,j,k</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; end</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.quit 0</span></span>
+</code></pre></div>
+
+<p><strong><span style="color: #00007f">Ergebnisse</span></strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>dans programme principal, avant l&#39;appel à proc1 : i=4 j=5 k=6
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dans proc1 i=5 j=6 k=7
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>dans programme principal, après l&#39;appel à proc1 : i=4 j=6 k=7
+</code></pre></div>
+<p><strong>Kommentare</strong></p>
+<ul>
+  <li>In einem VBScript-Skript gibt es keinen bestimmten Ort für Funktionen und Prozeduren. Sie können an beliebiger Stelle im Quellcode stehen. Im Allgemeinen werden sie entweder am Anfang oder am Ende gruppiert, und das Hauptprogramm ist als durchgehender Block strukturiert.
+  </li>
+</ul>
+<p><a id="refheading1879532734444"></a>
+<a id="toc535044821"></a></p>
+<h3 id="533-syntax-fur-den-aufruf-von-funktionen-und-prozeduren">5.3.3. <span style="color: #4f81bd">Syntax für den Aufruf von Funktionen und Prozeduren</span></h3>
+<p>Sei p eine Prozedur, die formale Parameter pf1, pf2, ... akzeptiert</p>
+<ul>
+  <li>Der Aufruf der Prozedur p hat die Form
+  </li>
+</ul>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>p pe1, pe2, ...
+</code></pre></div>
+<p>ohne Klammern um die Parameter</p>
+<ul>
+  <li>Wenn die Prozedur p keine Parameter akzeptiert, kann man entweder den Aufruf p oder p() und die Deklaration <i>sub p </i>oder sub p<i>() </i>verwenden
+  </li>
+</ul>
+
+<p>Sei f eine Funktion, die formale Parameter pf1, pf2, ... akzeptiert</p>
+<ul>
+  <li>Die Funktion f wird in der Form
+  </li>
+</ul>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>résultat=f(pe1, pe2, ...)
+</code></pre></div>
+<p>Klammern um die Parameter sind obligatorisch. Wenn die Funktion f keine Parameter benötigt, kann man entweder den Aufruf <em>f</em> oder <em>f()</em> und die Deklaration <em>function f</em> oder <em>function f()</em> verwenden.</p>
+<ul>
+  <li>Das Ergebnis der Funktion f kann vom aufrufenden Programm ignoriert werden. Die Funktion f wird dann als Prozedur betrachtet und folgt den Regeln für den Aufruf von Prozeduren. Wir schreiben dann f pe1, pe2, ... (ohne Klammern), um die Funktion f aufzurufen.
+  </li>
+</ul>
+
+<p>Wenn die Funktion oder Prozedur eine Objektmethode ist, scheinen die Regeln etwas anders und inkonsistent zu sein.</p>
+<ul>
+  <li>So können wir <span style="color: #000000">MyFile.WriteLine „Dies ist ein Test.“ oder MyFile.WriteLine(„Dies ist ein Test.“) </span>schreiben<span style="color: #000000"> </span>
+  </li>
+  <li>, aber während wir wscript.echo 4 schreiben können, können wir wscript.echo(4) nicht schreiben.
+  </li>
+</ul>
+
+<p>Wir halten uns an die folgenden Regeln:</p>
+<ul>
+  <li>keine Klammern um die Parameter einer Prozedur oder Funktion, die als Prozedur verwendet wird
+  </li>
+  <li>Klammern um die Parameter einer Funktion
+  </li>
+</ul>
+
+<p><a id="refheading1879732734444"></a>
+<a id="toc535044822"></a></p>
+<h3 id="534-einige-beispiele-fur-funktionen">5.3.4. <span style="color: #4f81bd">Einige Beispiele für Funktionen</span></h3>
+<p>Nachfolgend finden Sie einige Beispiele für Funktionsdefinitionen und deren Verwendung:</p>
+<p><strong>Programm</strong></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> </span><span style="color:#00007f">Function</span><span style="color:#000000"> plusgrandque(byval i, </span><span style="color:#00007f">ByVal</span><span style="color:#000000"> j)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; returns boolean true if i&gt;j, boolean false otherwise</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; data verification</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> isnumeric(i) </span><span style="color:#00007f">And</span><span style="color:#000000"> isnumeric(j) </span><span style="color:#00007f">Then</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">If</span><span style="color:#000000"> i&gt;j </span><span style="color:#00007f">Then</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      plusgrandque=true</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">Else</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      plusgrandque=false</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Else</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo &quot;Arguments (&quot; &amp; i &amp; &quot;,&quot; &amp; j &amp; &quot;) erronés&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    plusgrandque=false</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Exit</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> </span><span style="color:#00007f">Function</span><span style="color:#000000"> rendUnTableau(byval n)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; makes an array of n elements</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  tableau=array()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; check validity of parameter n</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> isnumeric(n) </span><span style="color:#00007f">And</span><span style="color:#000000"> n&gt;=1 </span><span style="color:#00007f">Then</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">ReDim</span><span style="color:#000000"> </span><span style="color:#00007f">Preserve</span><span style="color:#000000"> tableau(n)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">For</span><span style="color:#000000"> i= 0 </span><span style="color:#00007f">To</span><span style="color:#000000"> n-1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      tableau(i)=i</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">Next</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Else</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo &quot;Argument [&quot; &amp; n &amp; &quot;] erroné&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; we return the result</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  rendUnTableau=tableau</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"> </span><span style="color:#00007f">Function</span><span style="color:#000000"> argumentsVariables(byref arguments)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; arguments is an array of numbers whose sum is returned</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  somme=0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">For</span><span style="color:#000000"> i=0 </span><span style="color:#00007f">To</span><span style="color:#000000"> ubound(arguments)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    somme=somme+arguments(i)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Next</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  argumentsVariables=somme</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; two parameter-free functions declared in 2 different ways</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Function</span><span style="color:#000000"> sansParametres1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    sansParametres=4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Function</span><span style="color:#000000"> sansParametres2()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    sansParametres=4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">Function</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; ------------- calls to functions and procedures</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; calls function plusgrandque</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;plusgrandque(10,6)=&quot; &amp; plusgrandque(10,6)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;plusgrandque(6,10)=&quot; &amp; plusgrandque(6,10)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;plusgrandque(6,6)=&quot; &amp; plusgrandque(6,6)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;plusgrandque(6,&#x27;a&#x27;)=&quot; &amp; plusgrandque(6,&quot;a&quot;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; calls to the rendUnTableau function</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  monTableau=rendUnTableau(10)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">For</span><span style="color:#000000"> i=0 </span><span style="color:#00007f">To</span><span style="color:#000000"> ubound(monTableau)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo monTableau(i)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Next</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  monTableau=rendUnTableau(-6)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">For</span><span style="color:#000000"> i=0 </span><span style="color:#00007f">To</span><span style="color:#000000"> ubound(monTableau)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo monTableau(i)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Next</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; calls to the argumentsVariables function</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;somme=&quot; &amp; argumentsVariables(array(-1,2,7,8))</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;somme=&quot; &amp; argumentsVariables(array(-1,10,12))</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; function calls without parameters</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  res=sansParametres1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  res=sansParametres1()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  sansParametres1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  sansParametres1()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  res=sansParametres2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  res=sansParametres2()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  sansParametres2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  sansParametres2()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; end</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  wscript.quit 0</span></span>
+</code></pre></div>
+
+<p><strong>Ergebnisse</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>plusgrandque(10,6)=Vrai
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>plusgrandque(6,10)=Faux
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>plusgrandque(6,6)=Faux
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>Arguments (6,a) erronés
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>plusgrandque(6,&#39;a&#39;)=Faux
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>0
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>1
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>2
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>3
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>4
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>5
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>6
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>7
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>8
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>9
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>Argument [-6] erroné
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>somme=16
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>somme=21
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>somme=10
+</code></pre></div>
+<p><strong>Kommentare</strong></p>
+<ul>
+  <li>Die Funktion<i> `rendUnTableau` </i>zeigt, dass eine Funktion mehrere Ergebnisse statt nur eines zurückgeben kann. Dazu müssen sie lediglich in eine Array-Variant abgelegt und diese Variant als Ergebnis zurückgegeben werden.
+  </li>
+  <li>Umgekehrt zeigt die Funktion <i>`argumentsVariables`</i>, dass man eine Funktion schreiben kann, die eine variable Anzahl von Argumenten akzeptiert. Auch hier muss man sie einfach in eine Array-Varianten ablegen und diese Variante zu einem Funktionsparameter machen.
+  </li>
+</ul>
+<p><a id="refheading1879932734444"></a>
+<a id="toc535044823"></a></p>
+<h3 id="535-ausgabeparameter-oder-funktionsergebnis">5.3.5. <span style="color: #4f81bd">Ausgabeparameter oder Funktionsergebnis</span></h3>
+<p>Angenommen, die Analyse einer Anwendung hat ergeben, dass ein Modul M mit Eingabeparametern Ei und Ausgabeparametern Sj benötigt wird. Zur Erinnerung: Eingabeparameter sind Informationen, die das aufrufende Programm dem aufgerufenen Programm zur Verfügung stellt, und umgekehrt sind Ausgabeparameter Informationen, die das aufgerufene Programm dem aufrufenden Programm zur Verfügung stellt. In VBScript gibt es mehrere Lösungen für Ausgabeparameter:</p>
+<ul>
+  <li>Wenn es nur einen Ausgabeparameter gibt, kann dieser zum Ergebnis einer Funktion gemacht werden. Es gibt dann keinen Ausgabeparameter mehr, sondern lediglich ein Funktionsergebnis.
+  </li>
+  <li>Gibt es n Ausgabeparameter, kann einer davon als Funktionsergebnis dienen, während die verbleibenden n-1 als Ausgabeparameter fungieren. Alternativ kann man anstelle einer Funktion eine Prozedur mit n Ausgabeparametern verwenden. Man kann auch eine Funktion verwenden, die ein Array zurückgibt, das die n Werte enthält, die an das aufrufende Programm zurückgegeben werden sollen. Man beachte, dass das aufgerufene Programm seine Ergebnisse per Wert an das aufrufende Programm zurückgibt. Dieses Kopieren wird vermieden, wenn Ausgabeparameter per Referenz übergeben werden. Die letztgenannte Lösung spart daher Zeit.
+  </li>
+</ul>
+
+<p><a id="refheading1880132734444"></a>
+<a id="toc535044824"></a></p>
+<h2 id="54-das-vbscript-programm-zum-sortieren-von-werten">5.4. <span style="color: #4f81bd">Das VBScript-Programm zum Sortieren von Werten</span></h2>
+<p>Wir haben unsere Erörterung der modularen Programmierung mit einer algorithmischen Untersuchung der Sortierung von über die Tastatur eingegebenen numerischen Werten begonnen. Hier ist die VBScript-Implementierung, die verwendet werden könnte:</p>
+<p><strong>Programm</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">&#39; main program</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">T</span><span class="w">        </span><span class="c1">&#39; the table of values to be sorted</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">&#39; reading values</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">T</span><span class="o">=</span><span class="n">lire_tableau</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">&#39; value sorting</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">trier_tableau</span><span class="w"> </span><span class="n">T</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1">&#39; display of sorted values</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">ecrire_tableau</span><span class="w"> </span><span class="n">T</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1">&#39; end</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="c1">&#39; ---------- functions &amp; procedures</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1">&#39; -------- lire_tableau</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="kd">Function</span><span class="w"> </span><span class="nf">lire_tableau</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">    </span><span class="c1">&#39; values are requested</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="s2">&quot;Tapez les valeurs à trier sous la forme val1 val2  ... valn : &quot;</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">    </span><span class="c1">&#39; we read them</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">valeurs</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">    </span><span class="n">valeurs</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">    </span><span class="c1">&#39; we put them in a table</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">    </span><span class="n">lire_tableau</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="n">valeurs</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>
+<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="c1">&#39; -------- ecrire_tableau</span>
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="kd">Sub</span><span class="w"> </span><span class="nf">ecrire_tableau</span><span class="p">(</span><span class="k">byref</span><span class="w"> </span><span class="n">T</span><span class="p">)</span>
+<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="w">    </span><span class="c1">&#39; displays the contents of table T</span>
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="nb">join</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>
+<a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="c1">&#39; -------- trier_tableau</span>
+<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="kd">Sub</span><span class="w"> </span><span class="nf">trier_tableau</span><span class="w"> </span><span class="p">(</span><span class="k">byref</span><span class="w"> </span><span class="n">T</span><span class="p">)</span>
+<a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="w">    </span><span class="c1">&#39; sorts array T in ascending order</span>
+<a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>
+<a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="w">    </span><span class="c1">&#39; find the imax index of the T[0..ifin] array</span>
+<a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="w">    </span><span class="c1">&#39; to exchange T[imax] with the last element of array T[0..ifin]</span>
+<a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="w">    </span><span class="c1">&#39; then start again with an array with 1 fewer element</span>
+<a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a>
+<a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">ifin</span><span class="p">,</span><span class="w"> </span><span class="nv">imax</span><span class="p">,</span><span class="w"> </span><span class="nv">temp</span>
+<a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a><span class="w">    </span><span class="k">For</span><span class="w"> </span><span class="n">ifin</span><span class="o">=</span><span class="nb">ubound</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a><span class="w">        </span><span class="c1">&#39; find the imax index of the T[0..ifin] array</span>
+<a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a><span class="w">        </span><span class="n">imax</span><span class="o">=</span><span class="n">chercher_max</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">ifin</span><span class="p">)</span>
+<a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a><span class="w">        </span><span class="c1">&#39; we exchange the max with the last element of array T[0..ifin]</span>
+<a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a><span class="w">        </span><span class="n">temp</span><span class="o">=</span><span class="n">T</span><span class="p">(</span><span class="n">ifin</span><span class="p">):</span><span class="n">T</span><span class="p">(</span><span class="n">ifin</span><span class="p">)</span><span class="o">=</span><span class="n">T</span><span class="p">(</span><span class="n">imax</span><span class="p">):</span><span class="n">T</span><span class="p">(</span><span class="n">imax</span><span class="p">)</span><span class="o">=</span><span class="n">temp</span>
+<a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a><span class="w">    </span><span class="k">Next</span>
+<a id="__codelineno-15-52" name="__codelineno-15-52" href="#__codelineno-15-52"></a><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-15-53" name="__codelineno-15-53" href="#__codelineno-15-53"></a>
+<a id="__codelineno-15-54" name="__codelineno-15-54" href="#__codelineno-15-54"></a><span class="c1">&#39; -------- chercher_max</span>
+<a id="__codelineno-15-55" name="__codelineno-15-55" href="#__codelineno-15-55"></a><span class="kd">Function</span><span class="w"> </span><span class="nf">chercher_max</span><span class="p">(</span><span class="k">byRef</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">ByVal</span><span class="w"> </span><span class="n">ifin</span><span class="p">)</span>
+<a id="__codelineno-15-56" name="__codelineno-15-56" href="#__codelineno-15-56"></a><span class="w">    </span><span class="c1">&#39; find the imax index of the T[0..ifin] array</span>
+<a id="__codelineno-15-57" name="__codelineno-15-57" href="#__codelineno-15-57"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">imax</span>
+<a id="__codelineno-15-58" name="__codelineno-15-58" href="#__codelineno-15-58"></a><span class="w">    </span><span class="n">imax</span><span class="o">=</span><span class="mi">0</span>
+<a id="__codelineno-15-59" name="__codelineno-15-59" href="#__codelineno-15-59"></a><span class="w">    </span><span class="k">For</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">ifin</span>
+<a id="__codelineno-15-60" name="__codelineno-15-60" href="#__codelineno-15-60"></a><span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="nb">cdbl</span><span class="p">(</span><span class="n">T</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">&gt;</span><span class="nb">cdbl</span><span class="p">(</span><span class="n">T</span><span class="p">(</span><span class="n">imax</span><span class="p">))</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">imax</span><span class="o">=</span><span class="n">i</span>
+<a id="__codelineno-15-61" name="__codelineno-15-61" href="#__codelineno-15-61"></a><span class="w">    </span><span class="k">Next</span>
+<a id="__codelineno-15-62" name="__codelineno-15-62" href="#__codelineno-15-62"></a>
+<a id="__codelineno-15-63" name="__codelineno-15-63" href="#__codelineno-15-63"></a><span class="w">    </span><span class="c1">&#39; We return the result</span>
+<a id="__codelineno-15-64" name="__codelineno-15-64" href="#__codelineno-15-64"></a><span class="w">    </span><span class="n">chercher_max</span><span class="o">=</span><span class="n">imax</span>
+<a id="__codelineno-15-65" name="__codelineno-15-65" href="#__codelineno-15-65"></a><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+</code></pre></div>
+<p><strong>Ergebnisse</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Tapez les valeurs à trier sous la forme val1 val2  ... valn : 10 9 8 7 6 1
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>1 6 7 8 9 10
+</code></pre></div>
+<p>Kommentare:</p>
+<ul>
+  <li>Das im ursprünglichen Algorithmus identifizierte Swap-Modul wurde hier nicht als VBScript-Modul implementiert, da es als zu einfach angesehen wurde, um ein separates Modul zu rechtfertigen.
+  </li>
+</ul>
+<p><a id="refheading1880332734444"></a>
+<a id="toc535044825"></a></p>
+<h2 id="55-das-tax-programm-in-modularer-form">5.5. <span style="color: #4f81bd">Das TAX-Programm in modularer Form</span></h2>
+<p>Wir greifen das Steuerberechnungsprogramm wieder auf, diesmal in modularer Form geschrieben</p>
+<p><strong>Programm</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">&#39; calculating a taxpayer&#39;s tax liability</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">&#39; the program must be called with three parameters: married children salary</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1">&#39; married: character Y if married, N if unmarried</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">&#39; children: number of children</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1">&#39; salary: annual salary without cents</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">&#39; mandatory variable declaration</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">erreur</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1">&#39; retrieve arguments and check their validity</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">marie</span><span class="p">,</span><span class="w"> </span><span class="nv">enfants</span><span class="p">,</span><span class="w"> </span><span class="nv">salaire</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="n">erreur</span><span class="o">=</span><span class="n">getArguments</span><span class="p">(</span><span class="n">marie</span><span class="p">,</span><span class="n">enfants</span><span class="p">,</span><span class="n">salaire</span><span class="p">)</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c1">&#39; mistake?</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="k">If</span><span class="w"> </span><span class="n">erreur</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">&lt;&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="n">erreur</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="n">erreur</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="c1">&#39; retrieve the data needed to calculate taxes</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">limites</span><span class="p">,</span><span class="w"> </span><span class="nv">coeffR</span><span class="p">,</span><span class="w"> </span><span class="nv">coeffN</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="n">getData</span><span class="w"> </span><span class="n">limites</span><span class="p">,</span><span class="n">coeffR</span><span class="p">,</span><span class="n">coeffN</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="c1">&#39; the result is displayed</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;impôt=&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">calculerImpot</span><span class="p">(</span><span class="n">marie</span><span class="p">,</span><span class="n">enfants</span><span class="p">,</span><span class="n">salaire</span><span class="p">,</span><span class="n">limites</span><span class="p">,</span><span class="n">coeffR</span><span class="p">,</span><span class="n">coeffN</span><span class="p">)</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="c1">&#39; leave without error</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="c1">&#39; ------------ functions and procedures</span>
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="c1">&#39; ----------- getArguments</span>
+<a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="kd">Function</span><span class="w"> </span><span class="nf">getArguments</span><span class="p">(</span><span class="k">byref</span><span class="w"> </span><span class="n">marie</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">enfants</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">salaire</span><span class="p">)</span>
+<a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="w">    </span><span class="c1">&#39; must retrieve three values passed as arguments to the main program</span>
+<a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="w">    </span><span class="c1">&#39; an argument is passed to the program without spaces in front and behind it</span>
+<a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="w">    </span><span class="c1">&#39; use regular expressions to check data validity</span>
+<a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a>
+<a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a><span class="w">    </span><span class="c1">&#39; returns an error array variant with 2 values</span>
+<a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a><span class="w">    </span><span class="c1">&#39; error(0): error code, 0 if no error</span>
+<a id="__codelineno-17-37" name="__codelineno-17-37" href="#__codelineno-17-37"></a><span class="w">    </span><span class="c1">&#39; error(1): error message if error otherwise empty string</span>
+<a id="__codelineno-17-38" name="__codelineno-17-38" href="#__codelineno-17-38"></a>
+<a id="__codelineno-17-39" name="__codelineno-17-39" href="#__codelineno-17-39"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">syntaxe</span>
+<a id="__codelineno-17-40" name="__codelineno-17-40" href="#__codelineno-17-40"></a><span class="w">    </span><span class="n">syntaxe</span><span class="o">=</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-41" name="__codelineno-17-41" href="#__codelineno-17-41"></a><span class="w">    </span><span class="s2">&quot;Syntaxe : pg marié enfants salaire&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-42" name="__codelineno-17-42" href="#__codelineno-17-42"></a><span class="w">    </span><span class="s2">&quot;marié : caractère O si marié, N si non marié&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-43" name="__codelineno-17-43" href="#__codelineno-17-43"></a><span class="w">    </span><span class="s2">&quot;enfants : nombre d&#39;enfants (entier &gt;=0)&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-44" name="__codelineno-17-44" href="#__codelineno-17-44"></a><span class="w">    </span><span class="s2">&quot;salaire : salaire annuel sans les centimes (entier &gt;=0)&quot;</span>
+<a id="__codelineno-17-45" name="__codelineno-17-45" href="#__codelineno-17-45"></a>
+<a id="__codelineno-17-46" name="__codelineno-17-46" href="#__codelineno-17-46"></a><span class="w">    </span><span class="c1">&#39; we check that there are 3 arguments</span>
+<a id="__codelineno-17-47" name="__codelineno-17-47" href="#__codelineno-17-47"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">nbArguments</span>
+<a id="__codelineno-17-48" name="__codelineno-17-48" href="#__codelineno-17-48"></a><span class="w">    </span><span class="n">nbArguments</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">.</span><span class="n">count</span>
+<a id="__codelineno-17-49" name="__codelineno-17-49" href="#__codelineno-17-49"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">nbArguments</span><span class="o">&lt;&gt;</span><span class="mi">3</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-17-50" name="__codelineno-17-50" href="#__codelineno-17-50"></a><span class="w">        </span><span class="c1">&#39; error msg</span>
+<a id="__codelineno-17-51" name="__codelineno-17-51" href="#__codelineno-17-51"></a><span class="w">        </span><span class="n">getArguments</span><span class="o">=</span><span class="w"> </span><span class="nb">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">syntaxe</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;erreur : nombre d&#39;arguments incorrect&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-52" name="__codelineno-17-52" href="#__codelineno-17-52"></a><span class="w">        </span><span class="c1">&#39; end</span>
+<a id="__codelineno-17-53" name="__codelineno-17-53" href="#__codelineno-17-53"></a><span class="w">        </span><span class="k">Exit</span><span class="w"> </span><span class="kd">Function</span>
+<a id="__codelineno-17-54" name="__codelineno-17-54" href="#__codelineno-17-54"></a><span class="w">    </span><span class="nf">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-55" name="__codelineno-17-55" href="#__codelineno-17-55"></a>
+<a id="__codelineno-17-56" name="__codelineno-17-56" href="#__codelineno-17-56"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">modele</span><span class="p">,</span><span class="w"> </span><span class="nv">correspondances</span>
+<a id="__codelineno-17-57" name="__codelineno-17-57" href="#__codelineno-17-57"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">modele</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="nb">regexp</span>
+<a id="__codelineno-17-58" name="__codelineno-17-58" href="#__codelineno-17-58"></a>
+<a id="__codelineno-17-59" name="__codelineno-17-59" href="#__codelineno-17-59"></a><span class="w">    </span><span class="c1">&#39; marital status must be among the characters oOnN</span>
+<a id="__codelineno-17-60" name="__codelineno-17-60" href="#__codelineno-17-60"></a><span class="w">    </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;^[oOnN]$&quot;</span>
+<a id="__codelineno-17-61" name="__codelineno-17-61" href="#__codelineno-17-61"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-17-62" name="__codelineno-17-62" href="#__codelineno-17-62"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-17-63" name="__codelineno-17-63" href="#__codelineno-17-63"></a><span class="w">        </span><span class="c1">&#39; error msg</span>
+<a id="__codelineno-17-64" name="__codelineno-17-64" href="#__codelineno-17-64"></a><span class="w">        </span><span class="n">getArguments</span><span class="o">=</span><span class="nb">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">syntaxe</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;erreur : argument marie incorrect&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-65" name="__codelineno-17-65" href="#__codelineno-17-65"></a><span class="w">        </span><span class="c1">&#39; we leave</span>
+<a id="__codelineno-17-66" name="__codelineno-17-66" href="#__codelineno-17-66"></a><span class="w">        </span><span class="k">Exit</span><span class="w"> </span><span class="kd">Function</span>
+<a id="__codelineno-17-67" name="__codelineno-17-67" href="#__codelineno-17-67"></a><span class="w">    </span><span class="nf">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-68" name="__codelineno-17-68" href="#__codelineno-17-68"></a><span class="w">    </span><span class="c1">&#39; the value</span>
+<a id="__codelineno-17-69" name="__codelineno-17-69" href="#__codelineno-17-69"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="nb">lcase</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;o&quot;</span><span class="k">Then</span>
+<a id="__codelineno-17-70" name="__codelineno-17-70" href="#__codelineno-17-70"></a><span class="w">        </span><span class="n">marie</span><span class="o">=</span><span class="no">true</span>
+<a id="__codelineno-17-71" name="__codelineno-17-71" href="#__codelineno-17-71"></a><span class="w">    </span><span class="k">Else</span>
+<a id="__codelineno-17-72" name="__codelineno-17-72" href="#__codelineno-17-72"></a><span class="w">        </span><span class="n">marie</span><span class="o">=</span><span class="no">false</span>
+<a id="__codelineno-17-73" name="__codelineno-17-73" href="#__codelineno-17-73"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-74" name="__codelineno-17-74" href="#__codelineno-17-74"></a>
+<a id="__codelineno-17-75" name="__codelineno-17-75" href="#__codelineno-17-75"></a><span class="w">    </span><span class="c1">&#39; children must be an integer &gt;=0</span>
+<a id="__codelineno-17-76" name="__codelineno-17-76" href="#__codelineno-17-76"></a><span class="w">    </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;^\d{1,2}$&quot;</span>
+<a id="__codelineno-17-77" name="__codelineno-17-77" href="#__codelineno-17-77"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-17-78" name="__codelineno-17-78" href="#__codelineno-17-78"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-17-79" name="__codelineno-17-79" href="#__codelineno-17-79"></a><span class="w">        </span><span class="c1">&#39; error</span>
+<a id="__codelineno-17-80" name="__codelineno-17-80" href="#__codelineno-17-80"></a><span class="w">        </span><span class="n">getArguments</span><span class="o">=</span><span class="w"> </span><span class="nb">array</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">syntaxe</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;erreur : argument enfants incorrect&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-81" name="__codelineno-17-81" href="#__codelineno-17-81"></a><span class="w">        </span><span class="c1">&#39; we leave</span>
+<a id="__codelineno-17-82" name="__codelineno-17-82" href="#__codelineno-17-82"></a><span class="w">        </span><span class="k">Exit</span><span class="w"> </span><span class="kd">Function</span>
+<a id="__codelineno-17-83" name="__codelineno-17-83" href="#__codelineno-17-83"></a><span class="w">    </span><span class="nf">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-84" name="__codelineno-17-84" href="#__codelineno-17-84"></a><span class="w">    </span><span class="c1">&#39; the value</span>
+<a id="__codelineno-17-85" name="__codelineno-17-85" href="#__codelineno-17-85"></a><span class="w">    </span><span class="n">enfants</span><span class="o">=</span><span class="nb">cint</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-17-86" name="__codelineno-17-86" href="#__codelineno-17-86"></a>
+<a id="__codelineno-17-87" name="__codelineno-17-87" href="#__codelineno-17-87"></a><span class="w">    </span><span class="c1">&#39; salary must be an integer &gt;=0</span>
+<a id="__codelineno-17-88" name="__codelineno-17-88" href="#__codelineno-17-88"></a><span class="w">    </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;^\d{1,9}$&quot;</span>
+<a id="__codelineno-17-89" name="__codelineno-17-89" href="#__codelineno-17-89"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-17-90" name="__codelineno-17-90" href="#__codelineno-17-90"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-17-91" name="__codelineno-17-91" href="#__codelineno-17-91"></a><span class="w">        </span><span class="c1">&#39; error</span>
+<a id="__codelineno-17-92" name="__codelineno-17-92" href="#__codelineno-17-92"></a><span class="w">        </span><span class="n">getArguments</span><span class="o">=</span><span class="w"> </span><span class="nb">array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">syntaxe</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="no">vbCRLF</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;erreur : argument salaire incorrect&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-93" name="__codelineno-17-93" href="#__codelineno-17-93"></a><span class="w">        </span><span class="c1">&#39; we leave</span>
+<a id="__codelineno-17-94" name="__codelineno-17-94" href="#__codelineno-17-94"></a><span class="w">        </span><span class="k">Exit</span><span class="w"> </span><span class="kd">Function</span>
+<a id="__codelineno-17-95" name="__codelineno-17-95" href="#__codelineno-17-95"></a><span class="w">    </span><span class="nf">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-96" name="__codelineno-17-96" href="#__codelineno-17-96"></a><span class="w">    </span><span class="c1">&#39; the value</span>
+<a id="__codelineno-17-97" name="__codelineno-17-97" href="#__codelineno-17-97"></a><span class="w">    </span><span class="n">salaire</span><span class="o">=</span><span class="nb">clng</span><span class="p">(</span><span class="n">wscript</span><span class="p">.</span><span class="n">arguments</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-17-98" name="__codelineno-17-98" href="#__codelineno-17-98"></a>
+<a id="__codelineno-17-99" name="__codelineno-17-99" href="#__codelineno-17-99"></a><span class="w">    </span><span class="c1">&#39; finished without error</span>
+<a id="__codelineno-17-100" name="__codelineno-17-100" href="#__codelineno-17-100"></a><span class="w">    </span><span class="n">getArguments</span><span class="o">=</span><span class="nb">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-101" name="__codelineno-17-101" href="#__codelineno-17-101"></a><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+<a id="__codelineno-17-102" name="__codelineno-17-102" href="#__codelineno-17-102"></a>
+<a id="__codelineno-17-103" name="__codelineno-17-103" href="#__codelineno-17-103"></a><span class="c1">&#39; ----------- getData</span>
+<a id="__codelineno-17-104" name="__codelineno-17-104" href="#__codelineno-17-104"></a><span class="kd">Sub</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="k">byref</span><span class="w"> </span><span class="n">limites</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">coeffR</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">coeffN</span><span class="p">)</span>
+<a id="__codelineno-17-105" name="__codelineno-17-105" href="#__codelineno-17-105"></a><span class="w">    </span><span class="c1">&#39; we define the data needed to calculate the tax in 3 tables</span>
+<a id="__codelineno-17-106" name="__codelineno-17-106" href="#__codelineno-17-106"></a><span class="w">    </span><span class="n">limites</span><span class="o">=</span><span class="nb">array</span><span class="p">(</span><span class="mi">12620</span><span class="p">,</span><span class="mi">13190</span><span class="p">,</span><span class="mi">15640</span><span class="p">,</span><span class="mi">24740</span><span class="p">,</span><span class="mi">31810</span><span class="p">,</span><span class="mi">39970</span><span class="p">,</span><span class="mi">48360</span><span class="p">,</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-107" name="__codelineno-17-107" href="#__codelineno-17-107"></a><span class="w">    </span><span class="mi">55790</span><span class="p">,</span><span class="mi">92970</span><span class="p">,</span><span class="mi">127860</span><span class="p">,</span><span class="mi">151250</span><span class="p">,</span><span class="mi">172040</span><span class="p">,</span><span class="mi">195000</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-17-108" name="__codelineno-17-108" href="#__codelineno-17-108"></a><span class="w">    </span><span class="n">coeffr</span><span class="o">=</span><span class="nb">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.45</span><span class="p">,</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-109" name="__codelineno-17-109" href="#__codelineno-17-109"></a><span class="w">    </span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.65</span><span class="p">)</span>
+<a id="__codelineno-17-110" name="__codelineno-17-110" href="#__codelineno-17-110"></a><span class="w">    </span><span class="n">coeffn</span><span class="o">=</span><span class="nb">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">631</span><span class="p">,</span><span class="mf">1290.5</span><span class="p">,</span><span class="mf">2072.5</span><span class="p">,</span><span class="mf">3309.5</span><span class="p">,</span><span class="mi">4900</span><span class="p">,</span><span class="mf">6898.5</span><span class="p">,</span><span class="mf">9316.5</span><span class="p">,</span><span class="w"> </span><span class="n">_</span>
+<a id="__codelineno-17-111" name="__codelineno-17-111" href="#__codelineno-17-111"></a><span class="w">    </span><span class="mi">12106</span><span class="p">,</span><span class="mf">16754.5</span><span class="p">,</span><span class="mf">23147.5</span><span class="p">,</span><span class="mi">30710</span><span class="p">,</span><span class="mi">39312</span><span class="p">,</span><span class="mi">49062</span><span class="p">)</span>
+<a id="__codelineno-17-112" name="__codelineno-17-112" href="#__codelineno-17-112"></a><span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+<a id="__codelineno-17-113" name="__codelineno-17-113" href="#__codelineno-17-113"></a>
+<a id="__codelineno-17-114" name="__codelineno-17-114" href="#__codelineno-17-114"></a><span class="c1">&#39; ----------- calculerImpot</span>
+<a id="__codelineno-17-115" name="__codelineno-17-115" href="#__codelineno-17-115"></a><span class="kd">Function</span><span class="w"> </span><span class="nf">calculerImpot</span><span class="p">(</span><span class="k">byval</span><span class="w"> </span><span class="n">marie</span><span class="p">,</span><span class="k">ByVal</span><span class="w"> </span><span class="n">enfants</span><span class="p">,</span><span class="k">ByVal</span><span class="w"> </span><span class="n">salaire</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">limites</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">coeffR</span><span class="p">,</span><span class="w"> </span><span class="k">ByRef</span><span class="w"> </span><span class="n">coeffN</span><span class="p">)</span>
+<a id="__codelineno-17-116" name="__codelineno-17-116" href="#__codelineno-17-116"></a>
+<a id="__codelineno-17-117" name="__codelineno-17-117" href="#__codelineno-17-117"></a><span class="w">    </span><span class="c1">&#39; the number of shares is calculated</span>
+<a id="__codelineno-17-118" name="__codelineno-17-118" href="#__codelineno-17-118"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">nbParts</span>
+<a id="__codelineno-17-119" name="__codelineno-17-119" href="#__codelineno-17-119"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">marie</span><span class="o">=</span><span class="no">true</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-17-120" name="__codelineno-17-120" href="#__codelineno-17-120"></a><span class="w">        </span><span class="n">nbParts</span><span class="o">=</span><span class="p">(</span><span class="n">enfants</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span>
+<a id="__codelineno-17-121" name="__codelineno-17-121" href="#__codelineno-17-121"></a><span class="w">    </span><span class="k">Else</span>
+<a id="__codelineno-17-122" name="__codelineno-17-122" href="#__codelineno-17-122"></a><span class="w">        </span><span class="n">nbParts</span><span class="o">=</span><span class="p">(</span><span class="n">enfants</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<a id="__codelineno-17-123" name="__codelineno-17-123" href="#__codelineno-17-123"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<a id="__codelineno-17-124" name="__codelineno-17-124" href="#__codelineno-17-124"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">enfants</span><span class="o">&gt;=</span><span class="mi">3</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">nbParts</span><span class="o">=</span><span class="n">nbParts</span><span class="o">+</span><span class="mf">0.5</span>
+<a id="__codelineno-17-125" name="__codelineno-17-125" href="#__codelineno-17-125"></a>
+<a id="__codelineno-17-126" name="__codelineno-17-126" href="#__codelineno-17-126"></a><span class="w">    </span><span class="c1">&#39; we calculate the family quotient and taxable income</span>
+<a id="__codelineno-17-127" name="__codelineno-17-127" href="#__codelineno-17-127"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">revenu</span><span class="p">,</span><span class="w"> </span><span class="nv">qf</span>
+<a id="__codelineno-17-128" name="__codelineno-17-128" href="#__codelineno-17-128"></a><span class="w">    </span><span class="n">revenu</span><span class="o">=</span><span class="mf">0.72</span><span class="o">*</span><span class="n">salaire</span>
+<a id="__codelineno-17-129" name="__codelineno-17-129" href="#__codelineno-17-129"></a><span class="w">    </span><span class="n">qf</span><span class="o">=</span><span class="n">revenu</span><span class="o">/</span><span class="n">nbParts</span>
+<a id="__codelineno-17-130" name="__codelineno-17-130" href="#__codelineno-17-130"></a>
+<a id="__codelineno-17-131" name="__codelineno-17-131" href="#__codelineno-17-131"></a><span class="w">    </span><span class="c1">&#39; tax calculation</span>
+<a id="__codelineno-17-132" name="__codelineno-17-132" href="#__codelineno-17-132"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">impot</span>
+<a id="__codelineno-17-133" name="__codelineno-17-133" href="#__codelineno-17-133"></a><span class="w">    </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<a id="__codelineno-17-134" name="__codelineno-17-134" href="#__codelineno-17-134"></a><span class="w">    </span><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="nb">ubound</span><span class="p">(</span><span class="n">limites</span><span class="p">)</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="n">qf</span><span class="o">&gt;</span><span class="n">limites</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-17-135" name="__codelineno-17-135" href="#__codelineno-17-135"></a><span class="w">        </span><span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+<a id="__codelineno-17-136" name="__codelineno-17-136" href="#__codelineno-17-136"></a><span class="w">    </span><span class="k">Loop</span>
+<a id="__codelineno-17-137" name="__codelineno-17-137" href="#__codelineno-17-137"></a><span class="w">    </span><span class="n">calculerImpot</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">revenu</span><span class="o">*</span><span class="n">coeffr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">nbParts</span><span class="o">*</span><span class="n">coeffn</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<a id="__codelineno-17-138" name="__codelineno-17-138" href="#__codelineno-17-138"></a><span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+</code></pre></div>
+<p><strong>Kommentare</strong></p>
+<ul>
+  <li>Die Funktion <b>„getArguments“ </b>ruft die Daten des Steuerzahlers ab (Ehepartner, Kinder, Gehalt). Diese werden hier als Argumente an das VBScript-Programm übergeben. Sollte sich dies ändern – beispielsweise wenn diese Argumente aus einer grafischen Benutzeroberfläche stammen –, müsste nur die Prozedur <i>„getArguments“ </i>neu geschrieben werden, nicht die anderen.
+  </li>
+  <li>Die Funktion <i>„getArguments“ </i>kann Fehler in den Argumenten erkennen. In diesem Fall hätte man sich entscheiden können, die Ausführung des Programms innerhalb der Funktion „getArguments“ mit einer <i>„wscript.</i>quit“-Anweisung zu beenden. Dies sollte niemals innerhalb einer Funktion oder Prozedur geschehen. Wenn eine Funktion oder Prozedur einen Fehler erkennt, muss sie dies auf irgendeine Weise dem aufrufenden Programm signalisieren. Es ist Sache des aufrufenden Programms, zu entscheiden, ob die Ausführung beendet wird oder nicht, nicht die der Prozedur. In unserem Beispiel könnte das aufrufende Programm beschließen, den Benutzer aufzufordern, die fehlerhaften Daten über die Tastatur erneut einzugeben, anstatt die Ausführung zu beenden.
+  </li>
+  <li>Hier gibt die Funktion <i>„getArguments“ </i>ein Array-Variant zurück, bei dem das erste Element ein Fehlercode ist (0, wenn kein Fehler vorliegt) und das zweite eine Fehlermeldung, falls ein Fehler aufgetreten ist. Durch Überprüfung des zurückgegebenen Ergebnisses kann das aufrufende Programm feststellen, ob ein Fehler aufgetreten ist oder nicht.
+  </li>
+  <li>Die Prozedur <b>`getData` </b>ruft die zur Berechnung der Steuer benötigten Daten ab. Hier werden diese Daten direkt innerhalb der Prozedur `getData` definiert. Würden diese Daten aus einer anderen Quelle stammen – beispielsweise einer Datei oder einer Datenbank –, müsste nur die Prozedur `getData` umgeschrieben werden, nicht die anderen.
+  </li>
+  <li>Die Funktion `<b>calculerImpot` </b>berechnet die Steuer, sobald alle Daten vorliegen, unabhängig davon, wie diese beschafft wurden.
+  </li>
+  <li>Beachten Sie daher, dass modulare Programmierung die (Wieder-)Verwendung bestimmter Module in unterschiedlichen Kontexten ermöglicht. Dieses Konzept wurde in den letzten zwanzig Jahren im Rahmen des Objektkonzepts intensiv weiterentwickelt.
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, verfasst von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der
+<em>Creative Commons Namensnennung – Nicht kommerziell –
+ShareAlike 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
