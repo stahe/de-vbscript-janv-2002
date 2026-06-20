@@ -12,13 +12,13 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/de-vbscript-janv-2002/einleitung.html">
+        <link rel="canonical" href="https://stahe.github.io/de-vbscript-janv-2002/einfuhrung.html">
       
       
         <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="vbscript-ausfuhrungskontexte.html">
+        <link rel="next" href="die-ausfuhrungsumgebungen-von-vbscript.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>1. Einleitung - Einführung in VBScript</title>
+        <title>1. Einführung - Einführung in VBScript</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-einleitung" class="md-skip">
+        <a href="#1-einfuhrung" class="md-skip">
           Skip to content
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. Einleitung
+              1. Einführung
             
           </span>
         </div>
@@ -314,14 +314,14 @@
         
       
       
-      <a href="einleitung.html" class="md-nav__link md-nav__link--active">
+      <a href="einfuhrung.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Einleitung
+    1. Einführung
   
 
     
@@ -342,14 +342,14 @@
   
   
     <li class="md-nav__item">
-      <a href="vbscript-ausfuhrungskontexte.html" class="md-nav__link">
+      <a href="die-ausfuhrungsumgebungen-von-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. VBSCRIPT-Ausführungskontexte
+    2. Die Ausführungsumgebungen von VBSCRIPT
   
 
     
@@ -369,14 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="grundlagen-der-vbscript-programmierung.html" class="md-nav__link">
+      <a href="grundlagen-der-programmierung-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Grundlagen der VBScript-Programmierung
+    3. Grundlagen der Programmierung VBSCRIPT
   
 
     
@@ -487,18 +487,18 @@
 
 
 
-<h1 id="1-einleitung">1. <span style="color: #365f91">Einleitung</span></h1>
-<p>Das PDF dieses Dokuments ist |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBS84GgdLpwQp7Fw4eij0X_AX01nonkrTBlPwyW0-8O52I?e=N6z7PS">HIER</a>| verfügbar.</p>
-<p>Der Zweck dieses Dokuments ist es, die Grundlagen der Sprache VBScript sowie Beispiele für deren Verwendung in verschiedenen Bereichen zu vermitteln. VBScript ist eine Skriptsprache für Windows. Sie kann in verschiedenen Umgebungen ausgeführt werden, wie zum Beispiel</p>
+<h1 id="1-einfuhrung">1. <span style="color: #365f91">Einführung</span></h1>
+<p>Der PDF dieses Dokuments ist verfügbar |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQBS84GgdLpwQp7Fw4eij0X_AX01nonkrTBlPwyW0-8O52I?e=bhjoVR">HIER</a>|.</p>
+<p>Dieses Dokument soll die Grundlagen der Sprache VBScript sowie Anwendungsbeispiele in verschiedenen Bereichen vermitteln. VBScript ist eine Skriptsprache unter Windows. Sie kann in verschiedenen Containern wie</p>
 <ul>
-<li><em>Windows Scripting Host</em> zur direkten Verwendung in Windows, insbesondere zum Schreiben von Skripten für die Systemadministration</li>
-<li><em>Internet Explorer</em>. Dort wird es in HTML-Seiten verwendet, denen es eine Interaktivität verleiht, die mit HTML allein nicht erreicht werden kann.</li>
-<li><em>Internet Information Server</em> (IIS), Microsofts Webserver unter NT/2000, und dessen Äquivalent, <em>Personal Web Server</em> (PWS), unter Win9x. In diesem Fall wird VBScript für die serverseitige Webprogrammierung verwendet, eine Technologie, die von Microsoft als ASP (<em>Active Server Pages</em>) bezeichnet wird.</li>
+<li><em>Windows Scripting Host</em> für den direkten Einsatz unter Windows, insbesondere zum Schreiben von Skripten zur Systemadministration</li>
+<li><em>Internet Explorer</em>. Dort wird sie in HTML-Seiten verwendet, denen sie eine gewisse Interaktivität verleiht, die mit der Sprache HTML allein nicht zu erreichen wäre.</li>
+<li><em>Internet Information Server</em> (IIS), dem Webserver von Microsoft unter NT/2000, und dessen Entsprechung, <em>dem Personal Web Server</em> (PWS), unter Win9x. In diesem Fall wird VBScript für die serverseitige Programmierung verwendet, eine Technologie, die von Microsoft als ASP (<em>Active Server Pages</em>) bezeichnet wird.</li>
 </ul>
-<p>Da VBScript zudem eine von Visual Basic für Windows abgeleitete Sprache ist, kann es als Einstieg in diese Sprache – eine der am weitesten verbreiteten in der Windows-Umgebung – sowie in die Anwendungsversion von VB, bekannt als <strong>VBA</strong> (Visual Basic for Applications), dienen. VBA wird beispielsweise in der gesamten Microsoft Office-Suite verwendet, insbesondere in Excel. Somit dient VBScript als Einstieg in die Entwicklung für eine breite Palette von Windows-Anwendungen.</p>
-<p>VBScript ist keine objektorientierte Sprache, auch wenn es einige objektorientierte Merkmale aufweist. Das Konzept der Vererbung existiert beispielsweise nicht. Es kann jedoch die Objekte nutzen, die ihm von dem Container, in dem es ausgeführt wird, zur Verfügung gestellt werden, sowie ganz allgemein die auf dem Windows-Rechner verfügbaren ActiveX-Komponenten. Genau dieser Aspekt macht die Stärke von VBScript aus: eine Sprache, die an sich recht begrenzt ist, die aber dank der ihr zur Verfügung gestellten Objekte mit Skriptsprachen konkurrieren kann, die von vornherein umfangreicher sind, wie Perl, JavaScript und Python. Es ist eine Sprache, die einfach zu erlernen und zu verwenden ist und die den Weg für den Einsatz von Visual Basic für Windows ebnet, von dem sie direkt abgeleitet ist.</p>
-<p><strong>Dieses Dokument ist kein Kurs in Algorithmen</strong>. Es wird vorausgesetzt, dass Sie die Grundlagen der Programmierung beherrschen. Aktives Lesen ist erforderlich. Am besten nutzen Sie dieses Dokument, indem Sie die hier aufgeführten Beispiele auf Ihrem eigenen Rechner ausprobieren. Der WSH-Container ist normalerweise standardmäßig im Windows-System enthalten. Die aktuellste Version ist kostenlos auf der Microsoft-Website (http://www.microsoft.com) verfügbar. Um die genaue URL zum Herunterladen von WSH zu finden, können Sie mit einer Suchmaschine nach den Stichwörtern „Windows Scripting“ suchen. Unter den Ergebnissen sollten Sie die Download-URL für WSH finden.</p>
-<p>Serge Tahé, Januar 2002</p>
+<p>Da es sich bei VBSCRIPT zudem um eine von Visual Basic für Windows abgeleitete Sprache handelt, kann es als Einführung in diese Sprache dienen, die zu den am weitesten verbreiteten im Windows-Bereich gehört, sowie in die Version <em>Application</em> von VB, die als <strong>VBA</strong> (Visual Basic für Anwendungen) bezeichnet wird. VBA wird beispielsweise in der gesamten Microsoft Office-Suite verwendet, insbesondere in Excel. Somit ist VBSCRIPT ein Einstieg in die Entwicklung in einem breiten Spektrum von Windows-Anwendungen.</p>
+<p>VBScript ist keine objektorientierte Sprache, auch wenn sie gewisse objektorientierte Züge aufweist. Der Begriff der Vererbung existiert beispielsweise nicht. Es kann jedoch die Objekte nutzen, die ihm von dem Container, in dem es ausgeführt wird, zur Verfügung gestellt werden, sowie ganz allgemein die auf dem Windows-Rechner verfügbaren ActiveX-Komponenten. Genau dieser Aspekt macht die Stärke von VBScript aus – einer Sprache, die an sich recht einfach ist, aber dank der ihr zur Verfügung stehenden Objekte mit ursprünglich umfangreicheren Skriptsprachen wie Perl, JavaScript und Python mithalten kann. Es handelt sich um eine Sprache, die leicht zu erlernen und anzuwenden ist und den Weg für die Nutzung von Visual Basic für Windows ebnet, von dem sie direkt abgeleitet ist.</p>
+<p><strong>Dieses Dokument ist kein Kurs in Algorithmik</strong>. Die Grundlagen der Programmierung werden vorausgesetzt. Aktives Lesen ist erforderlich. Am besten nutzt man dieses Dokument wahrscheinlich, indem man die darin aufgeführten Beispiele auf dem eigenen Rechner ausprobiert. Der Container WSH wird normalerweise standardmäßig mit dem Windows-System ausgeliefert. Die aktuellste Version ist kostenlos auf der Website von Microsoft (http://www.microsoft.com) verfügbar. Um die richtige URL-Datei zu finden, mit der WSH heruntergeladen werden kann, kann man mit einer Suchmaschine im Internet nach den Stichwörtern „Windows Scripting“ suchen. Unter den Suchergebnissen sollte man die Datei URL finden, mit der man WSH herunterladen kann.</p>
+<p><strong>Serge Tahé</strong>, Januar 2002</p>
 
 
 
